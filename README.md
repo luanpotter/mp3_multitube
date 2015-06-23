@@ -8,6 +8,10 @@ sudo wget http://youtube-dl.org/downloads/2013.05.01/youtube-dl -O /usr/bin/yout
 sudo chmod a+x /usr/bin/youtube-dl
 sudo youtube-dl -U
 ```
+### Download to_mp3 library
+```bash
+sudo apt-get install libavcodec-extra-53  
+```
 
 ### Extract and use
 
