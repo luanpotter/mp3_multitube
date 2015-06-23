@@ -11,6 +11,12 @@ sudo youtube-dl -U
 
 ### Extract and use
 
+Put in your .bashrc:
+```bash
+export PATH=/mp3_multitube:$PATH
+```
+
+Execute:
 ```bash
 mp3-multitube your/path/file/urls.here
 ```
