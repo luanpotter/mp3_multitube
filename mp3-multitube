@@ -4,13 +4,18 @@ FILE_NAME=$1
 TOTAL_MUSICS=$(wc -l < $FILE_NAME)
 TOTAL_MUSICS=$((TOTAL_MUSICS+1))
 DOWNLOADES_MUSICS=0
+F=title
+
+if [[ $2 == '--ids' ]]; then
+  F=id
+fi
 
 multitudeStart() {
 	echo -e "Starting MP3 MultiTube! $TOTAL_MUSICS files(s) to download!\n"
 	{ cat $FILE_NAME; echo; } | while read url; do
 		DOWNLOADES_MUSICS=$((DOWNLOADES_MUSICS+1))
 		echo -n "Downloading ${DOWNLOADES_MUSICS}/$TOTAL_MUSICS ..."
-		youtube-dl -o '%(title)s.%(ext)s' --extract-audio --yes-playlist --audio-format mp3 --audio-quality 0 $url | grep ETA
+		youtube-dl -o "%($F)s.%(ext)s" --extract-audio --yes-playlist --audio-format mp3 --audio-quality 0 $url | grep ETA
 		echo  " done!"
 	done
 	echo -e "\nFinish! You have $DOWNLOADES_MUSICS new files(s)!"
